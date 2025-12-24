@@ -68,6 +68,9 @@ Click Run Code.
 
 If correct, you’ll see a success message with Time/Space complexity.
 
+<img width="798" height="574" alt="image" src="https://github.com/user-attachments/assets/92133946-84b7-4914-bfbd-5fed8746b1ba" />
+
+
 If wrong, your "Attempt Counter" increases.
 
 3-Strike Rule: If you fail 3 times, the app automatically reveals the Optimized Solution and a clear 5-line explanation to help you learn from your mistakes.
