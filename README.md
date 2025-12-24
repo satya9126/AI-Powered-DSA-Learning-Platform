@@ -20,7 +20,9 @@ Dynamic Hinting: Generates 6 custom, simple English hints specifically for the p
 
 Strict Grading: The AI acts as a mentor, checking for syntax issues and algorithmic efficiency.
 
-🔌 Offline Mode
+🔌 Offline 
+<img width="993" height="510" alt="image" src="https://github.com/user-attachments/assets/e1cc73f0-6af6-4f0d-8a92-d758d5fa3488" />
+
 
 No API key? No problem! The Offline Mode relies on local logic and the internal database.
 
@@ -50,6 +52,8 @@ my_project.py: The main execution script. It handles session states (like tracki
 
 
 Select Your Topic: Pick a category from the dropdown menu.
+<img width="1021" height="450" alt="image" src="https://github.com/user-attachments/assets/cf0cf032-15fc-4ac5-9c5f-587dc632bafa" />
+
 
 Choose a Challenge: Read the task and study the sample input/output.
 
@@ -58,6 +62,9 @@ Code Editor: Implement your logic within the pre-filled function signature.
 Run & Validate:
 
 Click Run Code.
+
+<img width="761" height="506" alt="image" src="https://github.com/user-attachments/assets/725f58e3-ea97-4cc0-b100-a12213304e56" />
+
 
 If correct, you’ll see a success message with Time/Space complexity.
 
