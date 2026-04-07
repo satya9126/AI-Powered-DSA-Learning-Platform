@@ -1,89 +1,131 @@
-📘 Student Learning - DSA App 💻
+🧠 CodeBuddy — AI-Powered DSA Learning Platform
 
-Welcome to the DSA Learning App, a Streamlit-based interactive platform designed to help students master Data Structures and Algorithms through hands-on practice and AI-powered assistance.
+A browser-based Data Structures & Algorithms practice platform with real-time AI validation, progressive hints, error analysis, and complete solutions — powered by the DeepSeek API.
 
-🚀 Overview
+📸 Screenshots
 
-This application provides a curated set of DSA challenges across various categories like Arrays, Strings, Linked Lists, and Graphs. Whether you prefer solving problems independently or with the help of an AI tutor, this app adapts to your learning style.
-
-⚡ Two Dynamic Learning Modes
-
-The app features a toggle to switch between two distinct environments depending on your needs and connectivity.
-
-🌐 AI Assist Mode (Online)
-
-Unlock the power of Generative AI by entering your DeepSeek API Key.
-
-Intelligent Validation: Uses the deepseek-coder model to strictly analyze your logic, not just the output.
-
-Dynamic Hinting: Generates 6 custom, simple English hints specifically for the problem you are stuck on.
-
-Strict Grading: The AI acts as a mentor, checking for syntax issues and algorithmic efficiency.
-
-🔌 Offline 
-<img width="993" height="510" alt="image" src="https://github.com/user-attachments/assets/e1cc73f0-6af6-4f0d-8a92-d758d5fa3488" />
+✅ Correct Solution with Complexity Analysis
+<img width="1359" height="596" alt="image" src="https://github.com/user-attachments/assets/ca7b15be-4fd4-4892-aa4e-5a8ca0d33ada" />
 
 
-No API key? No problem! The Offline Mode relies on local logic and the internal database.
+❌ Incorrect Submission Feedback
+<img width="1359" height="598" alt="image" src="https://github.com/user-attachments/assets/305a2a7f-9055-4851-88f0-377577753a1f" />
 
-Local Code Checker: Uses a Python exec() environment to run your code against predefined sample inputs and compare them to expected outputs.
 
-Hardcoded Hints: Access the curated "Pro-Hints" stored directly in the dsa_questions.json file.
+💡 Progressive Hints Panel
 
-Instant Solutions: Still get access to optimized code and complexity analysis without an internet connection.
+<img width="1359" height="595" alt="image" src="https://github.com/user-attachments/assets/141f7bd8-ed54-48af-b221-868d44d2c88b" />
+
+🔍 Error Analysis Panel
+<img width="1359" height="594" alt="image" src="https://github.com/user-attachments/assets/331377d3-930b-4cba-9a62-17b4e177b754" />
+
+
+✨ Features
+
+📚 105 Problems spanning 7 core DSA topics
+💻 5 Language Support — Python, JavaScript, Java, C, C++
+🤖 AI-Powered Validation via DeepSeek API
+📊 Complexity Analysis (Time & Space)
+🧠 Progressive Help System:
+💡 Hints after 2 failed attempts
+🔍 Error analysis after incorrect submission
+🔓 Solution after 4 failed attempts
+📈 Progress Tracking using localStorage
+🎯 Difficulty Filtering — Easy / Medium / Hard
+🔵 Attempt Tracking with 5-attempt limit
+⚠️ Language Mismatch Detection
+🧩 Modular Architecture
+
+📁 Project Structure
+
+codebuddy/
+index.html App shell, layout, and DOM
+style.css Styling (dark theme, responsive)
+data.js DSA question bank
+app.js Logic, state, API calls
+
+🗂️ Topics Covered
+
+📦 Arrays — 15
+🔤 Strings — 15
+🔗 Linked List — 15
+🗺️ HashMap — 15
+🌐 Graphs — 15
+🌳 Trees — 15
+📊 Heaps — 15
+
+🔢 Total — 105
+
+Each problem includes:
+
+📝 Problem statement
+📥 Sample input / output
+💡 Function signatures (5 languages)
+🆔 Unique ID
+
+🚀 Getting Started
+
+📌 Prerequisites
+
+🌐 Modern browser
+🔑 DeepSeek API key (sk-...)
+🖥️ Local HTTP server
+
+▶️ Running Locally
+
+Option 1 — Python:
+python -m http.server 8000
+
+Then open: http://localhost:8000
+
+Option 2 — Node.js:
+npx serve .
+
+Option 3 — VS Code:
+Use Live Server extension
+
+⚠️ Do not open via file:// (CORS issue)
+
+🔑 API Key Setup
+
+Paste API key (sk-...)
+Click Save
+✅ “API Key saved” will appear
+
+🎮 How to Use
+
+📂 Select Topic
+🧩 Choose Problem
+💻 Pick Language
+✍️ Write Code
+▶️ Run & Validate
+📊 Check tabs: Output, Hints, Errors, Solution
+
+🤖 AI Integration
+
+Uses DeepSeek API (deepseek-chat)
+
+✔️ Validate — correctness + complexity
+💡 Hints — after 2 fails
+🔍 Error Analysis — after wrong answer
+🔓 Solution — after 4 fails
+
+💾 State & Persistence
+
+💾 localStorage used
+📈 Tracks progress
+🔑 Saves API key
+🔄 Real-time updates
 
 🛠️ Tech Stack
 
-Frontend/UI: Streamlit
+💻 Frontend — HTML, CSS, JavaScript
+🔤 Fonts — Google Fonts
+🤖 AI — DeepSeek API
+💾 Storage — localStorage
+🌐 Server — Static HTTP server
 
-Language: Python
+📝 License
 
-AI Engine: DeepSeek-Coder API
-
-Data Storage: JSON
-
-📂 Project Structure
-
-dsa_questions.json: The heart of the app. It contains IDs, difficulty levels, sample inputs, expected outputs, hints, and optimized solutions with complexity analysis.
-
-my_project.py: The main execution script. It handles session states (like tracking your failed attempts), local code execution using contextlib, and API requests.
-
-💡 How the App Works (Interactively)
-
-
-Select Your Topic: Pick a category from the dropdown menu.
-<img width="1021" height="450" alt="image" src="https://github.com/user-attachments/assets/cf0cf032-15fc-4ac5-9c5f-587dc632bafa" />
-
-
-Choose a Challenge: Read the task and study the sample input/output.
-
-Code Editor: Implement your logic within the pre-filled function signature.
-
-Run & Validate:
-
-Click Run Code.
-
-<img width="761" height="506" alt="image" src="https://github.com/user-attachments/assets/725f58e3-ea97-4cc0-b100-a12213304e56" />
-
-
-If correct, you’ll see a success message with Time/Space complexity.
-
-<img width="798" height="574" alt="image" src="https://github.com/user-attachments/assets/92133946-84b7-4914-bfbd-5fed8746b1ba" />
-
-
-If wrong, your "Attempt Counter" increases.
-
-3-Strike Rule: If you fail 3 times, the app automatically reveals the Optimized Solution and a clear 5-line explanation to help you learn from your mistakes.
-
-📥 Getting Started
-
-
-1. Prerequisites
-Bash
-
-pip install streamlit requests
-2. Launch
-Bash
-
-streamlit run my_project.py
-Happy Coding! 💻✨
+📖 Educational use only.
+Follow DeepSeek API terms of service.
