@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeBuddy — DSA Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ── TOP BAR ── -->
+  <header class="topbar">
+    <div class="logo">
+      <span class="logo-dot"></span>
+      CodeBuddy
+    </div>
+    <span class="topbar-title">DSA Learning Platform · AI-Powered</span>
+    <div class="overall-progress-wrap">
+      <span id="overall-label">0 / 105 solved</span>
+      <div class="overall-track"><div class="overall-fill" id="overall-fill" style="width:0%"></div></div>
+    </div>
+    <div class="topbar-sep"></div>
+    <div class="api-area" id="api-area">
+      <input class="api-input" type="password" id="api-key-input" placeholder="DeepSeek API key (sk-...)">
+      <button class="btn btn-ghost" style="padding:6px 14px;font-size:12px;" onclick="saveApiKey()">Save</button>
+    </div>
+  </header>
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Topic</div>
+      <div class="custom-select">
+        <select id="topic-select" onchange="onTopicChange()"></select>
+      </div>
+    </div>
+
+    <div class="sidebar-label" style="padding: 0 16px; margin-bottom:6px;">Problems</div>
+    <div class="diff-filter-row">
+      <button class="diff-filter-btn active-all" id="filter-all"   onclick="setDiffFilter('all')">All</button>
+      <button class="diff-filter-btn" id="filter-easy"   onclick="setDiffFilter('easy')">Easy</button>
+      <button class="diff-filter-btn" id="filter-medium" onclick="setDiffFilter('medium')">Med</button>
+      <button class="diff-filter-btn" id="filter-hard"   onclick="setDiffFilter('hard')">Hard</button>
+    </div>
+    <div class="q-list" id="q-list"></div>
+
+    <div class="sidebar-divider"></div>
+
+    <!-- Progress bar -->
+    <div class="progress-block">
+      <div class="progress-label-row">
+        <span class="progress-label">Progress</span>
+        <span class="progress-count" id="progress-count">0 / 15</span>
+        <button class="icon-btn" onclick="clearProgress()" style="margin-left:4px;padding:2px 7px;font-size:9px;">✕ Clear</button>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="stat-block">
+      <div class="sidebar-label" style="margin-bottom:8px;">Problem Info</div>
+      <div class="stat-row">
+        <span class="stat-key">Difficulty</span>
+        <span id="diff-badge" class="badge easy">Easy</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-key">Topic</span>
+        <span class="stat-val" id="info-topic" style="color:var(--blue)">Arrays</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-key">Attempts</span>
+        <div class="attempt-row" id="attempt-dots"></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN EDITOR ── -->
+  <main class="main">
+    <!-- Problem card -->
+    <div class="problem-card">
+      <div class="problem-head">
+        <div class="problem-title" id="prob-title">Select a problem</div>
+        <span id="prob-badge" class="badge easy">Easy</span>
+      </div>
+      <div class="io-row">
+        <div class="io-box">
+          <div class="io-lbl">Sample Input</div>
+          <div class="io-val" id="prob-input">—</div>
+        </div>
+        <div class="io-box">
+          <div class="io-lbl">Expected Output</div>
+          <div class="io-val" id="prob-output">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editor chrome -->
+    <div class="editor-chrome">
+      <div class="chrome-dots">
+        <div class="cd cd-r"></div>
+        <div class="cd cd-y"></div>
+        <div class="cd cd-g"></div>
+      </div>
+      <span class="chrome-file" id="chrome-file">solution.py</span>
+      <button class="icon-btn" onclick="copyCode()" id="copy-code-btn">⧉ Copy</button>
+      <button class="icon-btn" onclick="clearCode()">⌫ Clear</button>
+      <div class="lang-select">
+        <select id="lang-select" onchange="onLangChange()">
+          <option value="python">🐍 Python</option>
+          <option value="javascript">🟨 JavaScript</option>
+          <option value="java">☕ Java</option>
+          <option value="c">⚙️ C</option>
+          <option value="cpp">⚙️ C++</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Code editor -->
+    <div class="editor-wrap">
+      <div class="line-numbers" id="line-nums"></div>
+      <textarea id="code-editor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off"
+        oninput="updateLineNumbers(); onEditorInput()" onscroll="syncScroll()" onkeydown="handleTab(event)"></textarea>
+    </div>
+
+    <!-- Actions -->
+    <div class="action-bar">
+      <button class="btn btn-primary" id="run-btn" onclick="runValidate()" disabled>▶ Run &amp; Validate</button>
+      <button class="btn btn-warn" id="hint-btn" onclick="showHints()">💡 Hints</button>
+      <button class="btn btn-ghost" id="err-btn" onclick="showErrors()">🔍 Errors</button>
+      <button class="btn btn-solution" id="sol-btn" onclick="showSolution()">🔓 Solution</button>
+      <div class="btn-spacer"></div>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--txt3);align-self:center;" id="attempt-label">0/5 attempts</span>
+    </div>
+  </main>
+
+  <!-- ── RIGHT PANEL ── -->
+  <aside class="right">
+    <div class="right-header">
+      <button class="tab-btn active" id="tab-output" onclick="switchTab('output')">Output</button>
+      <button class="tab-btn" id="tab-hints" onclick="switchTab('hints')">Hints</button>
+      <button class="tab-btn" id="tab-errors" onclick="switchTab('errors')">Errors</button>
+      <button class="tab-btn" id="tab-solution" onclick="switchTab('solution')">Solution</button>
+    </div>
+    <div class="right-body" id="right-body">
+      <div class="empty-state">
+        <div class="empty-icon">⚡</div>
+        <div>Write your solution</div>
+        <div>and click Run &amp; Validate</div>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
