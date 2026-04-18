@@ -59,10 +59,10 @@ It provides structured coding problems, a built-in code editor, and AI-based gui
 
 
 - Code Editor Interface
-- <img width="1359" height="596" alt="image" src="https://github.com/user-attachments/assets/130f7cef-8e58-4a59-89ff-779531c31b3e" />
+<img width="1359" height="596" alt="image" src="https://github.com/user-attachments/assets/130f7cef-8e58-4a59-89ff-779531c31b3e" />
  
 - Hint Generation
-- <img width="1359" height="595" alt="image" src="https://github.com/user-attachments/assets/675da900-809b-46f7-ac0b-cb81337ec119" />
+<img width="1359" height="595" alt="image" src="https://github.com/user-attachments/assets/675da900-809b-46f7-ac0b-cb81337ec119" />
  
 - Output Screen
-- <img width="1359" height="596" alt="image" src="https://github.com/user-attachments/assets/0508d3a5-9e77-4a1c-8f41-50b9cf598205" />
+<img width="1359" height="596" alt="image" src="https://github.com/user-attachments/assets/0508d3a5-9e77-4a1c-8f41-50b9cf598205" />
